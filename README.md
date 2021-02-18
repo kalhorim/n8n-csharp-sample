@@ -15,6 +15,8 @@ get this repo
 git clone https://github.com/kalhorim/n8n-csharp-sample.git
 ```
 
+copy content of file [src/Webapp/n8nWfs/createUser.json](src/Webapp/n8nWfs/createUser.json) to new workflow in http://localhost:5678/
+
 compile and run project.
 
 https://kalhorim.ir
