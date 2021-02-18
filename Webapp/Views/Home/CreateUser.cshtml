@@ -1,0 +1,31 @@
+﻿@model Webapp.Models.User
+@{
+    ViewData["Title"] = "Send Data";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Name">First Name</label>
+        <input id="Name" name="Name" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input id="LastName" name="LastName" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label></label>
+        <div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input name="IsGuest" id="IsGuest" type="checkbox" checked="checked" class="custom-control-input" value="true">
+                <label for="IsGuest" class="custom-control-label">Guest</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+</form>

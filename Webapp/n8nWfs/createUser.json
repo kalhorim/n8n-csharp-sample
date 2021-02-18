@@ -1,0 +1,121 @@
+{
+  "name": "createUser",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [
+        270,
+        410
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "CreateUser",
+        "responseCode": "=200",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "name": "createuser",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        530,
+        410
+      ],
+      "webhookId": "55935a89-3774-4447-b20c-60d710f48687",
+      "retryOnFail": false,
+      "notesInFlow": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$node[\"createuser\"].json[\"body\"][\"IsGuest\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        850,
+        410
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "item.body.IsValid=false;\nreturn item;\n"
+      },
+      "name": "InvalidUser",
+      "type": "n8n-nodes-base.functionItem",
+      "typeVersion": 1,
+      "position": [
+        1170,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "boolean": [
+            {
+              "name": "body.IsValid",
+              "value": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "ValidUser",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1170,
+        260
+      ]
+    }
+  ],
+  "connections": {
+    "createuser": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "ValidUser",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "InvalidUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "id": "1"
+}
