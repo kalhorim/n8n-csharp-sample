@@ -21,7 +21,10 @@ namespace Webapp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (Data.users.Any())
+                return View();
+            else
+                return RedirectToAction(nameof(CreateUser));
         }
 
         [HttpGet]

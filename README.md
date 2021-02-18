@@ -1,0 +1,1 @@
+In this repository, a simple example has been created to communicate with the Workflow Automation Tool n8n
