@@ -4,7 +4,7 @@ In this repository, a simple example has been created to communicate with the Wo
 
 first run n8n (I recommend using docker image) but depend on you please read n8n documentation.
 
-```docker
+```cmd
 
 docker run -it --rm --name n8n 	-p 5678:5678 -v c:\{yourpath}:/home/node/.n8n n8nio/n8n
 
